@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Genes Results</title>
+    <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script>
+        $(document).ready(function(){
+        $('#tab').DataTable({
+        "scrollX": true
+        });
+        });
+    </script>
+    <style>
+        th, td { white-space: nowrap; }
+    </style>
+</head>
+<body>
+
+<table id="tab" class="display">
+<thead>
+<tr>
+<th>Gene Symbol</th>
+<th>Official full name</th>
+<th>N° acces NCBI</th>
+<th>N° acces EnsEMBL</th>
+<th>Nom de la proteine</th>
+<th>N° acces protéine UniprotKB</th>
+<th>N° acces proteine RefSeq</th>
+<th>N° acces proteine EnsEMBL</th>
+<th>N° acces ARNm RefSeq</th>
+<th>N° acces ARNm EnsEMBL</th>
+<th>Signatures fonctionnelles (Pfam)</th>
+</tr>
+</thead>
+<tbody>
+
+
