@@ -35,3 +35,11 @@ def Ens_trans(Id):
  
 	decoded = r.json()
 	return decoded['Transcript']
+
+def Orthologs(Id_Ens):
+	r=requests.get("https://rest.ensembl.org/homology/id/{}?format=condensed;type=orthologues;content-type=application/json".format(Id_Ens))
+	result=r.json()
+	if len(result["data"])==0:
+		r=requests.get("https://rest.ensemblgenomes.org/homology/id/{}?format=condensed;type=orthologues;content-type=application/json".format(Id_Ens))
+		result=r.json()
+	return result
