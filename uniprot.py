@@ -6,6 +6,7 @@ def uniprot_parse(gene,organism):
 	liste=[]
 	liste2=[]
 	ID=[]
+	list_Name=[]
 	#récupérer toute la liste et rajouter 
 	url = "http://www.uniprot.org/uniprot/"
 	payload = {
@@ -32,13 +33,14 @@ def uniprot_parse(gene,organism):
 		liste2.append(result2)
 		#print(j,result2)
 		ID.append(result2[0])
+		list_Name.append(result2[1])
 		#print(liste2)
-	liste.append(liste2)
+	#liste.append(liste2)
 	#print(ID)
 	#print(i,liste[i][i])
 #print(liste[0][1])
 #print(liste[0][0][1])
-	return ID
+	return ID,list_Name
 	
 
 
