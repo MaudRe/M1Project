@@ -5,7 +5,6 @@ import re
 
 ID_pdb=[]
 def PDB_parse(ID_list):
-
 	list_id=[]
 	list_struct=[]
 	uniprot_string = ','.join(ID_list) 

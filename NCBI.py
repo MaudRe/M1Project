@@ -20,4 +20,16 @@ def Gene(gene_symbol, organism):
 	return(list_id,Name_list)
 
 
-#result/id/description
+def refseq_fct(db_refseq, type_refseq, organism, gene):
+		server = "https://eutils.ncbi.nlm.nih.gov"
+		ext = "/entrez/eutils/esearch.fcgi?db={}&term=({}[ORGN]+{}[Gene%20Name])&idtype=acc&retmode=json".format(db_refseq, organism, gene)
+		r = requests.get(server+ext)
+		if r.ok:
+			response = r.json()
+			listid = response["esearchresult"]["idlist"]
+			list_id = []
+			for id_refseq in listid:
+				if "{}_".format(type_refseq) in id_refseq:
+					list_id.append(id_refseq)
+		return(list_id)
+

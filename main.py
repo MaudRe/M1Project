@@ -3,8 +3,10 @@ import requests
 from uniprot import uniprot_parse
 from PDB import PDB_parse
 from Ensembl import Ensembl_id,Ens_trans,Orthologs
-from NCBI import Gene
+from NCBI import *
 from String import string_parse
+from Go import *
+from Prosite import *
 
 
 f=open('GeneSymbols.txt','r')
@@ -52,12 +54,34 @@ for i in lignes:
 		outputfile.write(Gene(gene,organism)[1][1])
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
-	outputfile.write("<td>") #Transcript id
-	outputfile.write("Coming Soon")
+	outputfile.write("<td>") #Transcript id Refseq
+	print("Transcript Refseq....."+'\n')
+	list_id=refseq_fct("nucleotide", "M", organism, gene)
+	if len(list_id) != 0:				
+		for id_ref in list_id:
+			if "NM" in id_ref:
+				ucsc_url = "http://genome.ucsc.edu/cgi-bin/hgTracks?org={}&position={}".format(organism, id_ref)
+				outputfile.write('<a href="https://www.ncbi.nlm.nih.gov/nuccore/{0}">{0}</a><br>\n'.format(id_ref, ucsc_url))
+			else:
+				outputfile.write('<a href="https://www.ncbi.nlm.nih.gov/nuccore/{0}">{0}</a><br>\n'.format(id_ref))
+	else:
+		outpufile.write('No data available\n')
+
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
-	outputfile.write("<td>") #Proteins id
-	outputfile.write("Coming Soon")
+	outputfile.write("<td>") #Proteins id Refseq
+	print("Proteine Refseq....."+'\n')
+	list_id_prot=refseq_fct("protein", "P", organism, gene)
+	if len(list_id_prot) != 0:				
+		for id_ref in list_id_prot:
+			if "NM" in id_ref:
+				ucsc_url = "http://genome.ucsc.edu/cgi-bin/hgTracks?org={}&position={}".format(organism, id_ref)
+				outputfile.write('<a href="https://www.ncbi.nlm.nih.gov/nuccore/{0}">{0}</a><br>\n'.format(id_ref, ucsc_url))
+			else:
+				outputfile.write('<a href="https://www.ncbi.nlm.nih.gov/nuccore/{0}">{0}</a><br>\n'.format(id_ref))
+		outputfile.write('</td>\n')
+	else:
+		outpufile.write('No data available\n')
 	outputfile.write("</td>") 
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #KEGG id
@@ -148,16 +172,22 @@ for i in lignes:
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Biological Process
-	outputfile.write("Coming Soon")
+	print("Go Biological Process..."+'\n')
+	for name in go(Id_Uni,'biological_process'):
+		outputfile.write(name+'<br>')
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Molecular fonction
-	outputfile.write("Coming Soon")
+	print("Go Molecular Function..."+'\n')
+	for name in go(Id_Uni,'molecular_function'):
+		outputfile.write(name+'<br>')
 	outputfile.write("</td>")
 
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Cellular Component
-	outputfile.write("Coming Soon")
+	print("Go Cellular Component..."+'\n')
+	for name in go(Id_Uni,'cellular_component'):
+		outputfile.write(name+'<br>')
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	print('PDB id.....'+'\n')
@@ -172,12 +202,16 @@ for i in lignes:
 #-------------------------------------------------------------------------------------------
 	print("String..."+'\n')
 	outputfile.write("<td>") #Interactions (STRING)
-	for Id in Id_Uni:
-		outputfile.write('<a href="{0}{1}">{1} interaction map </a><br>'.format(string_parse(),Id))
+	res=string_parse(Id_Uni)[0]
+	url=string_parse(Id_Uni)[1]
+	for Id in res:
+		outputfile.write('<a href="{0}{1}">{1} interaction map </a><br>'.format(url,Id))
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #PROSITE id
-	outputfile.write("Coming Soon")
+	print("Prosite....")
+	for Id in Prosite(Id_Uni):
+		outputfile.write(Id+'<br>')
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #PFAM id
