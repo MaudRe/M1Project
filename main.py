@@ -1,17 +1,17 @@
-import re
-import requests
-from uniprot import uniprot_parse
-from PDB import PDB_parse
-from Ensembl import Ensembl_id,Ens_trans,Orthologs
+import re,requests
+from uniprot import *
+from PDB import *
+from Ensembl import *
 from NCBI import *
-from String import string_parse
+from String import *
 from Go import *
 from Prosite import *
+from Pfam import *
+from KEGG import *
 
 
 f=open('GeneSymbols.txt','r')
 lignes=f.readlines()
-#print(lignes)
 f.close()
 genes=[]
 organism=[]
@@ -31,7 +31,7 @@ for i in lignes:
 	organism=tmp[1]
 	'''print(genes)
 	print(organism)'''
-	print(gene)
+	print(gene+'\n\n')
 #-------------------------------------------------------------------------------------------	
 	outputfile.write("<td>") #gene Symbol
 	outputfile.write(gene)
@@ -48,7 +48,6 @@ for i in lignes:
 	outputfile.write(Gene(gene,organism)[1][0])
 	if len(Gene(gene,organism)[0]) !=1 :
 		outputfile.write("<br>")
-
 		outputfile.write('<a href="https://www.ncbi.nlm.nih.gov/gene/{0}">{0}</a>'.format(Gene(gene,organism)[0][1]))
 		outputfile.write(" : ")
 		outputfile.write(Gene(gene,organism)[1][1])
@@ -84,12 +83,28 @@ for i in lignes:
 		outpufile.write('No data available\n')
 	outputfile.write("</td>") 
 #-------------------------------------------------------------------------------------------
+	print('KEGG....\n')
 	outputfile.write("<td>") #KEGG id
-	outputfile.write("Coming Soon")
+	id_NCBI=Gene(gene,organism)[0]
+	kegg_r=Kegg(id_NCBI[0])[0]
+	kegg_url = "https://www.genome.jp/dbget-bin/www_bget?"
+	for list_kegg in kegg_r:
+		for kegg_id in list_kegg: 
+			outputfile.write("<a href=\"{0}{1}\">{1}</a><br>\n".format(kegg_url, kegg_id))
+	if len(id_NCBI)!=1:
+		kegg_r=Kegg(id_NCBI[1])[0]
+		kegg_url = "https://www.genome.jp/dbget-bin/www_bget?"
+		for list_kegg in kegg_r:
+			for kegg_id in list_kegg: 
+				outputfile.write("<a href=\"{0}{1}\">{1}</a><br>\n".format(kegg_url, kegg_id))
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #KEGG Pathway
-	outputfile.write("Coming Soon")
+	pathway_url = "https://www.genome.jp/kegg-bin/show_pathway?"
+	kegg_r2=Kegg(id_NCBI[0])[1]
+	for list_id_name in kegg_r2:
+		for id_name in list_id_name:
+			outputfile.write("<a href=\"{0}{1}\">{1} : {2}</a><br>\n".format(pathway_url, id_name[0], id_name[1]))
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	print("Gene id Ensembl...."+'\n')
@@ -100,55 +115,49 @@ for i in lignes:
 	#print(ID_Ens)
 	outputfile.write(ID_Ens[0])
 	outputfile.write("<br>")
-	outputfile.write(str(Orthologs(ID_Ens[0],organism)))
+	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[1])+'>Othologs</a>')
+	outputfile.write("<br>")
+	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[0])+'>Genome browser</a>')
 	if len(ID_Ens)!=1:
 		outputfile.write('\n')
 		outputfile.write("<br>")
 		outputfile.write(ID_Ens[1])
 		outputfile.write("<br>")
-		outputfile.write(str(Orthologs(ID_Ens[1],organism)))
+		outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[1])+'>Othologs</a>')
+		outputfile.write("<br>")
+		outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[0])+'>Genome browser</a>')
 
 	outputfile.write("</td>")
 
 
 #-------------------------------------------------------------------------------------------
 	print("Transcript Ensembl.."+'\n')
-	outputfile.write("<td>") #Transcript
+	outputfile.write("<td>") #Transcript Ensembl
 	Transc=Ens_trans(ID_Ens[0])
-
 	for j in range(0,len(Transc)):
 			outputfile.write(Transc[j]['id'])
 			outputfile.write('\n')
 			outputfile.write("<br>")
 	outputfile.write("</td>")
 	
-	print('Proteins Ensembl.....'+'\n')
 
 #-------------------------------------------------------------------------------------------
+	print('Proteins Ensembl.....'+'\n')
 	outputfile.write("<td>") #Proteins
 	j=0
 	for j in range(0,len(Transc)):
-		#print(Orthologs(ID_Ens[0]))
 		if Transc[j]["biotype"]=="protein_coding" :
-			#print('proteine')
 			outputfile.write(Transc[j]["Translation"]["id"])		
-			#print(protein)
 			outputfile.write('\n')
 			outputfile.write("<br>")
 		else:
 			outputfile.write("<br>")
 	if len(ID_Ens)!=1:
-		#outputfile.write('\n')
-		#outputfile.write("<br>")
-		#print(len(Ens_trans(idens[1])))
 		for j in range(0,len(Ens_trans(ID_Ens[1]))):
-			#print(Ens_trans(idens[1])[j]['id'])
 			if Ens_trans(ID_Ens[1])[j]["biotype"]=="protein_coding" :
-				#print('proteine')
 				outputfile.write(Ens_trans(ID_Ens[1])[j]["Translation"]["id"])
 				outputfile.write('\n')
 				outputfile.write("<br>")
-				#print(protein)
 			else:
 				outputfile.write("<br>")
 
@@ -209,15 +218,31 @@ for i in lignes:
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #PROSITE id
-	print("Prosite....")
+	print("Prosite...."+'\n')
 	for Id in Prosite(Id_Uni):
 		outputfile.write(Id+'<br>')
+	for link in Graph(Id_Uni):
+		outputfile.write('<a href="{}">Graphical View</a><br>\n'.format(link))
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #PFAM id
-	outputfile.write("Coming Soon")
+	print('Pfam...'+'\n')
+	id_pfam=PFAM(Id_Uni)
+	if id_pfam:
+		for id_p in id_pfam:
+			outputfile.write('<a href=\"https://pfam.xfam.org/family/{1}\">{0} : {1}</a><br>\n'.format(id_p[0], id_p[1]))
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
+	outputfile.write("<td>") #PFAM viewer 
+	#Un seul viewer à remttre dans la colonne 
+	print('Pfam viewer...'+'\n')
+	id_pfam=PFAM(Id_Uni)
+	if id_pfam:
+		for id_p in id_pfam:
+			outputfile.write('<a href="https://pfam.xfam.org/protein/{0}">Protein : {1} </a><br>\n'.format(Id,id_p[1]))
+	outputfile.write("</td>")
+#-------------------------------------------------------------------------------------------
+	print("----------------------------------------------------\n")
 	outputfile.write("</tr>")
 end_file=open('Endtable.html','r')
 outputfile.write(end_file.read())

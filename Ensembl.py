@@ -37,32 +37,12 @@ def Ens_trans(Id):
 	return decoded['Transcript']
 
 def Orthologs(id_ens,organism):
-	r4=requests.get("https://rest.ensembl.org/homology/id/{}?format=condensed;type=orthologues;content-type=application/json".format(id_ens))
-	result=r4.json()
-
-	if len(result["data"])==0:
-		r4=requests.get("https://rest.ensemblgenomes.org/homology/id/{}?format=condensed;type=orthologues;content-type=application/json".format(id_ens))
-		result=r4.json()
-
-	
-	
-	if len(result["data"][0]["homologies"])>1:
-		r3 = requests.get("http://protists.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-		#print("1",r3.ok)
-		if not r3.ok:
-			r3 = requests.get("http://bacteria.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-			#print("2",r3.ok)
-			if not r3.ok:
-				r3 = requests.get("http://fungi.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-				#print("3",r3.ok)
-				if not r3.ok:
-					r3 = requests.get("http://metazoa.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-					#print("4",r3.ok)
-					if not r3.ok:
-						r3 = requests.get("http://plants.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-						#print("5",r3.ok)			
-						if not r3.ok:
-							r3 = requests.get("https://www.ensembl.org/{}/Gene/Compara_Ortholog?db=core;g={}".format(organism, id_ens))
-							#print("6",r3.ok)		
-		result = r3.url
-	return result
+	db_list = ["ensembl", "plants.ensembl", "bacteria.ensembl", "fungi.ensembl", "protists.ensembl", "metazoa.ensembl"]
+	for db in db_list:
+		final_url = "http://{}.org/{}/Gene/Summary?db=core;g={}".format(db, organism,id_ens)
+		test_url = requests.get(final_url)
+		if test_url.ok: 
+			result=test_url.url
+			gb_link = "http://www.{}.org/{}/Location/View?db=core;g={}".format(db, organism, id_ens)
+			break 
+	return result,gb_link
