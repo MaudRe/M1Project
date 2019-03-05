@@ -4,6 +4,23 @@
 
 <head>
     <meta charset="utf-8">
+	<style type="text/css">
+		table{
+ 			 border: 1px solid black;
+				}
+		th{
+			  text-align: center;
+ 			 border-left: 1px solid black;
+ 			 border-right: 1px solid black;
+				}		
+
+		td{
+			  text-align: center;
+ 			 border-left: 1px solid black;
+ 			 border-right: 1px solid black;
+				}
+
+	</style>
     <title>Genes Results</title>
     <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -32,7 +49,8 @@
 <th>Proteins id (Refseq)</th>
 <th>KEGG id</th>
 <th>KEGG Pathway</th>
-<th>Gene id (Ensembl)<br>Genome Browser + Ortholog</th>
+<th>Gene id (Ensembl)<br>Ortholog</th>
+<th>UCSC link & <br>Genome Browser</th>
 <th>Transcripts (Ensembl)</th>
 <th>Proteins (Ensembl)</th>
 <th>UNIPROT id</th>
@@ -58,16 +76,27 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa05200">hsa05200 : Pathways in cancer</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa05212">hsa05212 : Pancreatic cancer</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa05224">hsa05224 : Breast cancer</a><br>
-</td><td>ENSG00000139618<br><a href=http://www.ensembl.org/Homo_sapiens/Location/View?db=core;g=ENSG00000139618>Othologs</a><br><a href=http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000139618;r=13:32315474-32400266>Genome browser</a>
-<br>LRG_293<br><a href=http://www.ensembl.org/Homo_sapiens/Location/View?db=core;g=LRG_293>Othologs</a><br><a href=http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=LRG_293;r=13:32315480-32399672;t=LRG_293t1>Genome browser</a></td><td>ENST00000380152
-<br>ENST00000530893
-<br>ENST00000614259
-<br>ENST00000528762
-<br>ENST00000470094
-<br>ENST00000533776
-<br>ENST00000544455
-<br></td><td>ENSP00000369497
-<br><br><br><br><br><br>ENSP00000439902
+</td><td>ENSG00000139618
+<br><a href=https://rest.ensembl.org/homology/id/ENSG00000139618?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000139618>Genome Browser</a><br>
+<br>LRG_293
+<br>No Ortholog<br><a href=http://metazoa.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=LRG_293>Genome Browser</a></td><td><a href=https://rest.ensembl.org/homology/id/ENSG00000139618?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=Homo_sapiens">UCSC link</a></td><td><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000380152">ENST00000380152</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000530893">ENST00000530893</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000614259">ENST00000614259</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000528762">ENST00000528762</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000470094">ENST00000470094</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000533776">ENST00000533776</a><br>
+
+<br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/Summary?db=core;t=ENST00000544455">ENST00000544455</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?db=core;t=ENST00000544455">ENSP00000369497</a><br>
+
+<br><br><br><br><br><br><a href="https://www.ensembl.org/Homo_sapiens/Transcript/ProteinSummary?db=core;t=ENST00000544455">ENSP00000439902</a><br>
+
 <br><br></td><td><a href= "http://www.uniprot.org/uniprot/A0A386IQ54">A0A386IQ54</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A386IQ50">A0A386IQ50</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A386ING3">A0A386ING3</a><br>
@@ -146,43 +175,43 @@
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000800">lateral element</a>
 <br></td><td><a href="https://www.rcsb.org/structure/1N0W">1N0W</a> : Crystal structure of a RAD51-BRCA2 BRC repeat complex<br>
 <a href="https://www.rcsb.org/structure/3EU7">3EU7</a> : Crystal Structure of a PALB2 / BRCA2 complex<br>
-</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P51587">P51587 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50138">BRCA2_REPEAT : PS50138</a><br><a href="https://prosite.expasy.org/PS00261">GLYCO_HORMONE_BETA_1 : PS00261</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9968752124363.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4533852124713.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1031859125027.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5814515125284.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3798866125857.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7126209126382.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8299013126851.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6476827127282.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4673478127726.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6571266128192.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1992825128255.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=100293128648.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5394530129196.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3689583129686.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1585178130110.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=184203130627.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7339332131133.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1073930131285.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1451887131352.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4988131573.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5751691131947.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8656240132385.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7491586132761.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3209143133077.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7759947133434.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9196825133781.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2357846134107.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5404727134310.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5964187134341.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1658469134401.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=899756134818.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=860689135230.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9621736135712.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8296073136185.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=731071136670.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2984568137154.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=265216137304.scan.gz">Graphical View</a><br>
+</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P51587">P51587 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50138">BRCA2_REPEAT : PS50138</a><br><a href="https://prosite.expasy.org/PS00261">GLYCO_HORMONE_BETA_1 : PS00261</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=694918983402.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=404466683423.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=724038783461.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=882485383495.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=812085483511.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=180082083539.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=134368183593.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=684031283643.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=186332583726.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=99690783745.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=984074883830.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=896617583867.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=218228583911.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=332008283965.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=548343584010.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=233606084032.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=720733184082.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=87496784140.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=132088784182.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=638052184256.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=556093084290.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=401477184313.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=976541784363.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=79272684398.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=991646084454.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=947866784498.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=352830584537.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=241236184583.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=34469384619.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=805242684691.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=973475084720.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=335133884761.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=157406084778.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=335183484824.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=557707584876.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=911789784919.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=587327584961.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/BRCA2">PF00634 : BRCA2</a><br>
 <a href="https://pfam.xfam.org/family/BRCA-2_helical">PF09169 : BRCA-2_helical</a><br>
 <a href="https://pfam.xfam.org/family/BRCA-2_OB1">PF09103 : BRCA-2_OB1</a><br>
@@ -195,24 +224,27 @@
 </td><td><a href="https://www.genome.jp/dbget-bin/www_bget?cel:CELE_F53H8.4">cel:CELE_F53H8.4</a><br>
 </td><td><a href="https://www.genome.jp/kegg-bin/show_pathway?cel00600">cel00600 : Sphingolipid metabolism</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?cel01100">cel01100 : Metabolic pathways</a><br>
-</td><td>WBGene00004893<br><a href=http://www.ensembl.org/Caenorhabditis_elegans/Location/View?db=core;g=WBGene00004893>Othologs</a><br><a href=http://www.ensembl.org/Caenorhabditis_elegans/Gene/Summary?db=core;g=WBGene00004893;r=X:944826-948883;t=F53H8.4>Genome browser</a></td><td>F53H8.4
-<br></td><td>F53H8.4
+</td><td>WBGene00004893
+<br>No Ortholog<br><a href=http://metazoa.ensembl.org/Caenorhabditis_elegans/Gene/Summary?db=core;g=WBGene00004893>Genome Browser</a><br></td><td><a href=FALSE>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=Caenorhabditis_elegans">UCSC link</a></td><td><a href="https://www.ensembl.org/Caenorhabditis_elegans/Transcript/Summary?db=core;t=F53H8.4">F53H8.4</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/Caenorhabditis_elegans/Transcript/ProteinSummary?db=core;t=F53H8.4">F53H8.4</a><br>
+
 <br></td><td><a href= "http://www.uniprot.org/uniprot/Q20735">Q20735</a><br>
 </td><td>Phosphatidylcholine:ceramide cholinephosphotransferase 2 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006665">sphingolipid metabolic process</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006629">lipid metabolic process</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006686">sphingomyelin biosynthetic process</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0046513">ceramide biosynthetic process</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030148">sphingolipid biosynthetic process</a>
-<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0033188">sphingomyelin synthase activity</a>
+<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0047493">ceramide cholinephosphotransferase activity</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0033188">sphingomyelin synthase activity</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0016740">transferase activity</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0047493">ceramide cholinephosphotransferase activity</a>
 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0016021">integral component of membrane</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0016020">membrane</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030176">integral component of endoplasmic reticulum membrane</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030173">integral component of Golgi membrane</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005887">integral component of plasma membrane</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0016020">membrane</a>
 <br></td><td>No Data Available
-<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=Q20735">Q20735 interaction map </a><br></td><td><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=198333140731.scan.gz">Graphical View</a><br>
+<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=Q20735">Q20735 interaction map </a><br></td><td><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=68750187371.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/PAP2_C">PF14360 : PAP2_C</a><br>
 <a href="https://pfam.xfam.org/protein/Q20735">Protein : PAP2_C </a><br>
 </td></tr><tr><td>col1a1</td><td>mus_musculus</td><td><a href="https://www.ncbi.nlm.nih.gov/gene/12842">12842</a> : collagen, type I, alpha 1</td><td><a href="https://www.ncbi.nlm.nih.gov/nuccore/NM_007742.4">NM_007742.4</a><br>
@@ -229,54 +261,61 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05146">mmu05146 : Amoebiasis</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05165">mmu05165 : Human papillomavirus infection</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05205">mmu05205 : Proteoglycans in cancer</a><br>
-</td><td>ENSMUSG00000001506<br><a href=http://www.ensembl.org/mus_musculus/Location/View?db=core;g=ENSMUSG00000001506>Othologs</a><br><a href=http://www.ensembl.org/Mus_musculus/Gene/Summary?db=core;g=ENSMUSG00000001506;r=11:94936224-94953042>Genome browser</a></td><td>ENSMUST00000001547
-<br>ENSMUST00000139974
-<br>ENSMUST00000148593
-<br>ENSMUST00000148046
-<br></td><td>ENSMUSP00000001547
+</td><td>ENSMUSG00000001506
+<br><a href=https://rest.ensembl.org/homology/id/ENSMUSG00000001506?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/mus_musculus/Gene/Summary?db=core;g=ENSMUSG00000001506>Genome Browser</a><br></td><td><a href=https://rest.ensembl.org/homology/id/ENSMUSG00000001506?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=mus_musculus">UCSC link</a></td><td><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000001547">ENSMUST00000001547</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000139974">ENSMUST00000139974</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000148593">ENSMUST00000148593</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000148046">ENSMUST00000148046</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/mus_musculus/Transcript/ProteinSummary?db=core;t=ENSMUST00000148046">ENSMUSP00000001547</a><br>
+
 <br><br><br><br></td><td><a href= "http://www.uniprot.org/uniprot/P11087">P11087</a><br>
-</td><td>Collagen alpha-1<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001649">osteoblast differentiation</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071260">cellular response to mechanical stimulus</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0043588">skin development</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0038063">collagen-activated tyrosine kinase receptor signaling pathway</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030198">extracellular matrix organization</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0009612">response to mechanical stimulus</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001568">blood vessel development</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001503">ossification</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001501">skeletal system development</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0090263">positive regulation of canonical Wnt signaling pathway</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071230">cellular response to amino acid stimulus</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0070208">protein heterotrimerization</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0060351">cartilage development involved in endochondral bone morphogenesis</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0060346">bone trabecula formation</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0060325">face morphogenesis</a>
+</td><td>Collagen alpha-1<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0090263">positive regulation of canonical Wnt signaling pathway</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0048706">embryonic skeletal system development</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0048705">skeletal system morphogenesis</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0045893">positive regulation of transcription, DNA-templated</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0043589">skin morphogenesis</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0042060">wound healing</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0034505">tooth mineralization</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0034504">protein localization to nucleus</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0032964">collagen biosynthetic process</a>
-<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0048407">platelet-derived growth factor binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0042802">identical protein binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0002020">protease binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030335">positive regulation of cell migration</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030199">collagen fibril organization</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0010718">positive regulation of epithelial to mesenchymal transition</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0007605">sensory perception of sound</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0007601">visual perception</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001568">blood vessel development</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0001501">skeletal system development</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:1902618">cellular response to fluoride</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:1902617">response to fluoride</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071560">cellular response to transforming growth factor beta stimulus</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071364">cellular response to epidermal growth factor stimulus</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071356">cellular response to tumor necrosis factor</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071306">cellular response to vitamin E</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071300">cellular response to retinoic acid</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071260">cellular response to mechanical stimulus</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0055093">response to hyperoxia</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0051591">response to cAMP</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0048545">response to steroid hormone</a>
+<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030020">extracellular matrix structural constituent conferring tensile strength</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005201">extracellular matrix structural constituent</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0046872">metal ion binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030020">extracellular matrix structural constituent conferring tensile strength</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0048407">platelet-derived growth factor binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0042802">identical protein binding</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005515">protein binding</a>
-<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005615">extracellular space</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0002020">protease binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0046872">metal ion binding</a>
+<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0062023">collagen-containing extracellular matrix</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005615">extracellular space</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0031012">extracellular matrix</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005737">cytoplasm</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005584">collagen type I trimer</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005576">extracellular region</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0030141">secretory granule</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005794">Golgi apparatus</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005783">endoplasmic reticulum</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005581">collagen trimer</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005576">extracellular region</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0062023">collagen-containing extracellular matrix</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0031012">extracellular matrix</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005737">cytoplasm</a>
 <br></td><td>No Data Available
-<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P11087">P11087 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50184">VWFC_2 : PS50184</a><br><a href="https://prosite.expasy.org/PS01208">VWFC_1 : PS01208</a><br><a href="https://prosite.expasy.org/PS51461">NC1_FIB : PS51461</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1926666141484.scan.gz">Graphical View</a><br>
+<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P11087">P11087 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50184">VWFC_2 : PS50184</a><br><a href="https://prosite.expasy.org/PS01208">VWFC_1 : PS01208</a><br><a href="https://prosite.expasy.org/PS51461">NC1_FIB : PS51461</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=869799988301.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/VWC">PF00093 : VWC</a><br>
 <a href="https://pfam.xfam.org/family/Collagen">PF01391 : Collagen</a><br>
 <a href="https://pfam.xfam.org/family/COLFI">PF01410 : COLFI</a><br>
@@ -309,54 +348,52 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa03460">hsa03460 : Fanconi anemia pathway</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa05200">hsa05200 : Pathways in cancer</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?hsa05212">hsa05212 : Pancreatic cancer</a><br>
-</td><td>ENSG00000051180<br><a href=http://www.ensembl.org/homo_sapiens/Location/View?db=core;g=ENSG00000051180>Othologs</a><br><a href=http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000051180;r=15:40694774-40732339>Genome browser</a>
-<br>ENSG00000285396<br><a href=http://www.ensembl.org/homo_sapiens/Location/View?db=core;g=ENSG00000285396>Othologs</a><br><a href=http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000285396;r=15:40695129-40732158;t=ENST00000645673>Genome browser</a></td><td>ENST00000527860
-<br>ENST00000423169
-<br>ENST00000267868
-<br>ENST00000557850
-<br>ENST00000532743
-<br>ENST00000382643
-<br>ENST00000525066
-<br>ENST00000526763
-<br>ENST00000531277
-<br>ENST00000533741
-<br></td><td>ENSP00000432759
+</td><td>ENSG00000285396
+<br><a href=https://rest.ensembl.org/homology/id/ENSG00000285396?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/homo_sapiens/Gene/Summary?db=core;g=ENSG00000285396>Genome Browser</a><br>
+<br>ENSG00000051180
+<br><a href=https://rest.ensembl.org/homology/id/ENSG00000051180?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/homo_sapiens/Gene/Summary?db=core;g=ENSG00000051180>Genome Browser</a></td><td><a href=https://rest.ensembl.org/homology/id/ENSG00000285396?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=homo_sapiens">UCSC link</a></td><td><a href="https://www.ensembl.org/homo_sapiens/Transcript/Summary?db=core;t=ENST00000645673">ENST00000645673</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/homo_sapiens/Transcript/ProteinSummary?db=core;t=ENST00000645673">ENSP00000493712</a><br>
+
+<br>ENSP00000432759
 <br>ENSP00000406602
 <br>ENSP00000267868
 <br>ENSP00000454176
 <br>ENSP00000433924
 <br>ENSP00000372088
 <br><br>ENSP00000431897
-<br><br><br>ENSP00000493712
-<br></td><td><a href= "http://www.uniprot.org/uniprot/E9PI54">E9PI54</a><br>
+<br><br><br></td><td><a href= "http://www.uniprot.org/uniprot/E9PI54">E9PI54</a><br>
 <a href= "http://www.uniprot.org/uniprot/E9PJ30">E9PJ30</a><br>
 <a href= "http://www.uniprot.org/uniprot/Q06609">Q06609</a><br>
-</td><td>DNA repair protein RAD51 homolog 1<br>DNA repair protein RAD51 homolog 1<br>DNA repair protein RAD51 homolog 1 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006974">cellular response to DNA damage stimulus</a>
+</td><td>DNA repair protein RAD51 homolog 1<br>DNA repair protein RAD51 homolog 1<br>DNA repair protein RAD51 homolog 1 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000724">double-strand break repair via homologous recombination</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006259">DNA metabolic process</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006281">DNA repair</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:1990426">mitotic recombination-dependent replication fork processing</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006974">cellular response to DNA damage stimulus</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006310">DNA recombination</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000730">DNA recombinase assembly</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000724">double-strand break repair via homologous recombination</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0036297">interstrand cross-link repair</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0031297">replication fork processing</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0010833">telomere maintenance via telomere lengthening</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000722">telomere maintenance via recombination</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0007131">reciprocal meiotic recombination</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006312">mitotic recombination</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006281">DNA repair</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0072757">cellular response to camptothecin</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0071479">cellular response to ionizing radiation</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0051260">protein homooligomerization</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0051106">positive regulation of DNA ligation</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0010569">regulation of double-strand break repair via homologous recombination</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0051321">meiotic cell cycle</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006310">DNA recombination</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0006268">DNA unwinding involved in DNA replication</a>
-<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0003682">chromatin binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0019899">enzyme binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0043142">single-stranded DNA-dependent ATPase activity</a>
+<br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000150">recombinase activity</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000166">nucleotide binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0003677">DNA binding</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0003690">double-stranded DNA binding</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0003697">single-stranded DNA binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005524">ATP binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0008094">DNA-dependent ATPase activity</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0003682">chromatin binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0019899">enzyme binding</a>
+<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0043142">single-stranded DNA-dependent ATPase activity</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005515">protein binding</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0070182">DNA polymerase binding</a>
-<br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0008022">protein C-terminus binding</a>
 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005737">cytoplasm</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0005634">nucleus</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000790">nuclear chromatin</a>
@@ -377,9 +414,9 @@
 <a href="https://www.rcsb.org/structure/5JZC">5JZC</a> : helical filament<br>
 <a href="https://www.rcsb.org/structure/5NP7">5NP7</a> : CryoEM structure of Human Rad51 on single-stranded DNA to 4.2A resolution.<br>
 <a href="https://www.rcsb.org/structure/5NWL">5NWL</a> : Crystal structure of a human RAD51-ATP filament.<br>
-</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=E9PI54">E9PI54 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=E9PJ30">E9PJ30 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=Q06609">Q06609 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50162">RECA_2 : PS50162</a><br><a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=497742143281.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9046167143352.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7101623143460.scan.gz">Graphical View</a><br>
+</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=E9PI54">E9PI54 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=E9PJ30">E9PJ30 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=Q06609">Q06609 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50162">RECA_2 : PS50162</a><br><a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=46703393935.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=37576694072.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=117666394232.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/HHH_5">PF14520 : HHH_5</a><br>
 <a href="https://pfam.xfam.org/family/Rad51">PF08423 : Rad51</a><br>
 <a href="https://pfam.xfam.org/protein/<a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a>">Protein : Rad51 </a><br>
@@ -414,23 +451,41 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05412">mmu05412 : Arrhythmogenic right ventricular cardiomyopathy (ARVC)</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05414">mmu05414 : Dilated cardiomyopathy (DCM)</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?mmu05416">mmu05416 : Viral myocarditis</a><br>
-</td><td>ENSMUSG00000045103<br><a href=http://www.ensembl.org/mus_musculus/Location/View?db=core;g=ENSMUSG00000045103>Othologs</a><br><a href=http://www.ensembl.org/Mus_musculus/Gene/Summary?db=core;g=ENSMUSG00000045103;r=X:82948870-85206141>Genome browser</a></td><td>ENSMUST00000114000
-<br>ENSMUST00000128983
-<br>ENSMUST00000113991
-<br>ENSMUST00000132333
-<br>ENSMUST00000146331
-<br>ENSMUST00000149433
-<br>ENSMUST00000113992
-<br>ENSMUST00000156107
-<br>ENSMUST00000147740
-<br>ENSMUST00000141778
-<br>ENSMUST00000141261
-<br>ENSMUST00000139998
-<br>ENSMUST00000123308
-<br>ENSMUST00000127295
-<br></td><td>ENSMUSP00000109633
-<br><br>ENSMUSP00000109624
-<br><br><br><br>ENSMUSP00000109625
+</td><td>ENSMUSG00000045103
+<br><a href=https://rest.ensembl.org/homology/id/ENSMUSG00000045103?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/mus_musculus/Gene/Summary?db=core;g=ENSMUSG00000045103>Genome Browser</a><br></td><td><a href=https://rest.ensembl.org/homology/id/ENSMUSG00000045103?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=mus_musculus">UCSC link</a></td><td><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000114000">ENSMUST00000114000</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000128983">ENSMUST00000128983</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000113991">ENSMUST00000113991</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000132333">ENSMUST00000132333</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000146331">ENSMUST00000146331</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000149433">ENSMUST00000149433</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000113992">ENSMUST00000113992</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000156107">ENSMUST00000156107</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000147740">ENSMUST00000147740</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000141778">ENSMUST00000141778</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000141261">ENSMUST00000141261</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000139998">ENSMUST00000139998</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000123308">ENSMUST00000123308</a><br>
+
+<br><a href="https://www.ensembl.org/mus_musculus/Transcript/Summary?db=core;t=ENSMUST00000127295">ENSMUST00000127295</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/mus_musculus/Transcript/ProteinSummary?db=core;t=ENSMUST00000127295">ENSMUSP00000109633</a><br>
+
+<br><br><a href="https://www.ensembl.org/mus_musculus/Transcript/ProteinSummary?db=core;t=ENSMUST00000127295">ENSMUSP00000109624</a><br>
+
+<br><br><br><br><a href="https://www.ensembl.org/mus_musculus/Transcript/ProteinSummary?db=core;t=ENSMUST00000127295">ENSMUSP00000109625</a><br>
+
 <br><br><br><br><br><br><br><br></td><td><a href= "http://www.uniprot.org/uniprot/P11531">P11531</a><br>
 <a href= "http://www.uniprot.org/uniprot/Q3UF47">Q3UF47</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A1Q1PRS6">A0A1Q1PRS6</a><br>
@@ -449,19 +504,19 @@
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0008270">zinc ion binding</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0046872">metal ion binding</a>
 <br></td><td></td><td>No Data Available
-<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P11531">P11531 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=Q8BHM1">Q8BHM1 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=A2A9Z1">A2A9Z1 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=A2A9Z2">A2A9Z2 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50021">CH : PS50021</a><br><a href="https://prosite.expasy.org/PS00019">ACTININ_1 : PS00019</a><br><a href="https://prosite.expasy.org/PS00020">ACTININ_2 : PS00020</a><br><a href="https://prosite.expasy.org/PS50020">WW_DOMAIN_2 : PS50020</a><br><a href="https://prosite.expasy.org/PS01159">WW_DOMAIN_1 : PS01159</a><br><a href="https://prosite.expasy.org/PS50135">ZF_ZZ_2 : PS50135</a><br><a href="https://prosite.expasy.org/PS01357">ZF_ZZ_1 : PS01357</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9813943145431.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3818652145521.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=338907145562.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2949020145625.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5518104145695.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8858390145739.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3823284145770.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3218139145824.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8274486145884.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8446103145921.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2075986145952.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5995135145998.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6682742146043.scan.gz">Graphical View</a><br>
+<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P11531">P11531 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=Q8BHM1">Q8BHM1 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=A2A9Z1">A2A9Z1 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=A2A9Z2">A2A9Z2 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50021">CH : PS50021</a><br><a href="https://prosite.expasy.org/PS00019">ACTININ_1 : PS00019</a><br><a href="https://prosite.expasy.org/PS00020">ACTININ_2 : PS00020</a><br><a href="https://prosite.expasy.org/PS50020">WW_DOMAIN_2 : PS50020</a><br><a href="https://prosite.expasy.org/PS01159">WW_DOMAIN_1 : PS01159</a><br><a href="https://prosite.expasy.org/PS50135">ZF_ZZ_2 : PS50135</a><br><a href="https://prosite.expasy.org/PS01357">ZF_ZZ_1 : PS01357</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=849399797180.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=747887497228.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=14300297268.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=338996197285.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=926288097318.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=174133897363.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=598917897383.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=355910297401.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=840875397433.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=134376597458.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=229944497500.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=383867297518.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=653885797543.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/CH">PF00307 : CH</a><br>
 <a href="https://pfam.xfam.org/family/WW">PF00397 : WW</a><br>
 <a href="https://pfam.xfam.org/family/Spectrin">PF00435 : Spectrin</a><br>
@@ -476,10 +531,15 @@
 </td>
 </td><td><a href="https://www.genome.jp/dbget-bin/www_bget?gga:414745">gga:414745</a><br>
 </td><td><a href="https://www.genome.jp/kegg-bin/show_pathway?gga04514">gga04514 : Cell adhesion molecules (CAMs)</a><br>
-</td><td>ENSGALG00000015132<br><a href=http://www.ensembl.org/gallus_gallus/Location/View?db=core;g=ENSGALG00000015132>Othologs</a><br><a href=http://www.ensembl.org/Gallus_gallus/Gene/Summary?db=core;g=ENSGALG00000015132;r=2:104786041-104900468>Genome browser</a></td><td>ENSGALT00000097693
-<br>ENSGALT00000024417
-<br></td><td>ENSGALP00000070672
-<br>ENSGALP00000024371
+</td><td>ENSGALG00000015132
+<br><a href=https://rest.ensembl.org/homology/id/ENSGALG00000015132?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/gallus_gallus/Gene/Summary?db=core;g=ENSGALG00000015132>Genome Browser</a><br></td><td><a href=https://rest.ensembl.org/homology/id/ENSGALG00000015132?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=gallus_gallus">UCSC link</a></td><td><a href="https://www.ensembl.org/gallus_gallus/Transcript/Summary?db=core;t=ENSGALT00000097693">ENSGALT00000097693</a><br>
+
+<br><a href="https://www.ensembl.org/gallus_gallus/Transcript/Summary?db=core;t=ENSGALT00000024417">ENSGALT00000024417</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/gallus_gallus/Transcript/ProteinSummary?db=core;t=ENSGALT00000024417">ENSGALP00000070672</a><br>
+
+<br><a href="https://www.ensembl.org/gallus_gallus/Transcript/ProteinSummary?db=core;t=ENSGALT00000024417">ENSGALP00000024371</a><br>
+
 <br></td><td><a href= "http://www.uniprot.org/uniprot/P10288">P10288</a><br>
 </td><td>Cadherin-2 <br></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0098609">cell-cell adhesion</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0036032">neural crest cell delamination</a>
@@ -531,7 +591,7 @@
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0099059">integral component of presynaptic active zone membrane</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0045202">synapse</a>
 <br></td><td>No Data Available
-<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P10288">P10288 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50268">CADHERIN_2 : PS50268</a><br><a href="https://prosite.expasy.org/PS00232">CADHERIN_1 : PS00232</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1424107146763.scan.gz">Graphical View</a><br>
+<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P10288">P10288 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50268">CADHERIN_2 : PS50268</a><br><a href="https://prosite.expasy.org/PS00232">CADHERIN_1 : PS00232</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=794309898220.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/Cadherin">PF00028 : Cadherin</a><br>
 <a href="https://pfam.xfam.org/family/Cadherin_C">PF01049 : Cadherin_C</a><br>
 <a href="https://pfam.xfam.org/family/Cadherin_pro">PF08758 : Cadherin_pro</a><br>
@@ -561,20 +621,35 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre04218">dre04218 : Cellular senescence</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre04310">dre04310 : Wnt signaling pathway</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre05168">dre05168 : Herpes simplex infection</a><br>
-</td><td>ENSDARG00000035559<br><a href=http://www.ensembl.org/danio_rerio/Location/View?db=core;g=ENSDARG00000035559>Othologs</a><br><a href=http://www.ensembl.org/Danio_rerio/Gene/Summary?db=core;g=ENSDARG00000035559;r=5:24086227-24097805>Genome browser</a>
-<br>ENSDARG00000115148<br><a href=http://www.ensembl.org/danio_rerio/Location/View?db=core;g=ENSDARG00000115148>Othologs</a><br><a href=http://www.ensembl.org/Danio_rerio/Gene/Summary?db=core;g=ENSDARG00000115148;r=CHR_ALT_CTG5_1_14:24087441-24096142>Genome browser</a></td><td>ENSDART00000183644
-<br>ENSDART00000135934
-<br>ENSDART00000051549
-<br>ENSDART00000139520
-<br>ENSDART00000177458
-<br>ENSDART00000183748
-<br>ENSDART00000135083
-<br>ENSDART00000137298
-<br></td><td>ENSDARP00000152377
-<br>ENSDARP00000116736
-<br>ENSDARP00000051548
-<br><br>ENSDARP00000144168
-<br>ENSDARP00000151125
+</td><td>ENSDARG00000035559
+<br><a href=https://rest.ensembl.org/homology/id/ENSDARG00000035559?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/danio_rerio/Gene/Summary?db=core;g=ENSDARG00000035559>Genome Browser</a><br>
+<br>ENSDARG00000115148
+<br>No Ortholog<br><a href=http://metazoa.ensembl.org/danio_rerio/Gene/Summary?db=core;g=ENSDARG00000115148>Genome Browser</a></td><td><a href=https://rest.ensembl.org/homology/id/ENSDARG00000035559?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=danio_rerio">UCSC link</a></td><td><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000183644">ENSDART00000183644</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000135934">ENSDART00000135934</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000051549">ENSDART00000051549</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000139520">ENSDART00000139520</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000177458">ENSDART00000177458</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000183748">ENSDART00000183748</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000135083">ENSDART00000135083</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000137298">ENSDART00000137298</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000152377</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000116736</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000051548</a><br>
+
+<br><br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000144168</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000151125</a><br>
+
 <br><br><br>ENSDARP00000145150
 <br>ENSDARP00000147996
 <br></td><td><a href= "http://www.uniprot.org/uniprot/P79734">P79734</a><br>
@@ -602,16 +677,16 @@
 <a href="https://www.rcsb.org/structure/4CZ7">4CZ7</a> : Truncated tetramerization domain of zebrafish p53 (crystal form III)<br>
 <a href="https://www.rcsb.org/structure/4D1L">4D1L</a> : Tetramerization domain of zebrafish p53 (crystal form I)<br>
 <a href="https://www.rcsb.org/structure/4D1M">4D1M</a> : Tetramerization domain of zebrafish p53 (crystal form II)<br>
-</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P79734">P79734 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=G1K2L5">G1K2L5 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=B0R0M3">B0R0M3 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4665042149946.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2343602150086.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=285894150159.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6161777150217.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9826755150284.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1306975150340.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3996124150381.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7689201150426.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9195790150499.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7142847150533.scan.gz">Graphical View</a><br>
+</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P79734">P79734 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=G1K2L5">G1K2L5 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=B0R0M3">B0R0M3 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5649588100122.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7464103100196.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5010781100243.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8766541100281.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6368247100331.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8817775100354.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2296978100400.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2011456100450.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2361684100510.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9774026100596.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/P53">PF00870 : P53</a><br>
 <a href="https://pfam.xfam.org/family/P53_tetramer">PF07710 : P53_tetramer</a><br>
 <a href="https://pfam.xfam.org/protein/<a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a>">Protein : P53_tetramer </a><br>
@@ -627,24 +702,33 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?ptr03460">ptr03460 : Fanconi anemia pathway</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?ptr05200">ptr05200 : Pathways in cancer</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?ptr05212">ptr05212 : Pancreatic cancer</a><br>
-</td><td>ENSPTRG00000006926<br><a href=http://www.ensembl.org/pan_troglodytes/Location/View?db=core;g=ENSPTRG00000006926>Othologs</a><br><a href=http://www.ensembl.org/Pan_troglodytes/Gene/Summary?db=core;g=ENSPTRG00000006926;r=15:21164059-21199026>Genome browser</a></td><td>ENSPTRT00000012774
-<br>ENSPTRT00000079122
-<br>ENSPTRT00000096488
-<br>ENSPTRT00000108071
-<br></td><td>ENSPTRP00000011825
-<br>ENSPTRP00000082225
-<br>ENSPTRP00000068995
-<br>ENSPTRP00000092189
+</td><td>ENSPTRG00000006926
+<br><a href=https://rest.ensembl.org/homology/id/ENSPTRG00000006926?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/pan_troglodytes/Gene/Summary?db=core;g=ENSPTRG00000006926>Genome Browser</a><br></td><td><a href=https://rest.ensembl.org/homology/id/ENSPTRG00000006926?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=pan_troglodytes">UCSC link</a></td><td><a href="https://www.ensembl.org/pan_troglodytes/Transcript/Summary?db=core;t=ENSPTRT00000012774">ENSPTRT00000012774</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/Summary?db=core;t=ENSPTRT00000079122">ENSPTRT00000079122</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/Summary?db=core;t=ENSPTRT00000096488">ENSPTRT00000096488</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/Summary?db=core;t=ENSPTRT00000108071">ENSPTRT00000108071</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/pan_troglodytes/Transcript/ProteinSummary?db=core;t=ENSPTRT00000108071">ENSPTRP00000011825</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/ProteinSummary?db=core;t=ENSPTRT00000108071">ENSPTRP00000082225</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/ProteinSummary?db=core;t=ENSPTRT00000108071">ENSPTRP00000068995</a><br>
+
+<br><a href="https://www.ensembl.org/pan_troglodytes/Transcript/ProteinSummary?db=core;t=ENSPTRT00000108071">ENSPTRP00000092189</a><br>
+
 <br></td><td><a href= "http://www.uniprot.org/uniprot/H2Q966">H2Q966</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A2J8QDL2">A0A2J8QDL2</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A2I3SZ08">A0A2I3SZ08</a><br>
 <a href= "http://www.uniprot.org/uniprot/A0A2I3TSF7">A0A2I3TSF7</a><br>
 </td><td>RAD51 isoform 2 <br>DNA repair protein RAD51 homolog<br>DNA repair protein RAD51 homolog<br>RAD51 isoform 10 <br></td><td></td><td><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0000166">nucleotide binding</a>
 <br></td><td></td><td>No Data Available
-<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=H2Q966">H2Q966 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50162">RECA_2 : PS50162</a><br><a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2825528151675.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2309517151717.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9417080151755.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3631161151791.scan.gz">Graphical View</a><br>
+<br></td><td><a href="https://string-db.org/api/highres_image/network?identifiers=H2Q966">H2Q966 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50162">RECA_2 : PS50162</a><br><a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=10584103135.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9219175103304.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1393460103414.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8020521103571.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/Rad51">PF08423 : Rad51</a><br>
 <a href="https://pfam.xfam.org/family/HHH_5">PF14520 : HHH_5</a><br>
 <a href="https://pfam.xfam.org/protein/<a href="https://prosite.expasy.org/PS50163">RECA_3 : PS50163</a>">Protein : HHH_5 </a><br>
@@ -673,20 +757,35 @@
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre04218">dre04218 : Cellular senescence</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre04310">dre04310 : Wnt signaling pathway</a><br>
 <a href="https://www.genome.jp/kegg-bin/show_pathway?dre05168">dre05168 : Herpes simplex infection</a><br>
-</td><td>ENSDARG00000035559<br><a href=http://www.ensembl.org/danio_rerio/Location/View?db=core;g=ENSDARG00000035559>Othologs</a><br><a href=http://www.ensembl.org/Danio_rerio/Gene/Summary?db=core;g=ENSDARG00000035559;r=5:24086227-24097805>Genome browser</a>
-<br>ENSDARG00000115148<br><a href=http://www.ensembl.org/danio_rerio/Location/View?db=core;g=ENSDARG00000115148>Othologs</a><br><a href=http://www.ensembl.org/Danio_rerio/Gene/Summary?db=core;g=ENSDARG00000115148;r=CHR_ALT_CTG5_1_14:24087441-24096142>Genome browser</a></td><td>ENSDART00000183644
-<br>ENSDART00000135934
-<br>ENSDART00000051549
-<br>ENSDART00000139520
-<br>ENSDART00000177458
-<br>ENSDART00000183748
-<br>ENSDART00000135083
-<br>ENSDART00000137298
-<br></td><td>ENSDARP00000152377
-<br>ENSDARP00000116736
-<br>ENSDARP00000051548
-<br><br>ENSDARP00000144168
-<br>ENSDARP00000151125
+</td><td>ENSDARG00000035559
+<br><a href=https://rest.ensembl.org/homology/id/ENSDARG00000035559?format=condensed;type=orthologues;content-type=application/json>Othologs</a><br><a href=http://ensembl.org/danio_rerio/Gene/Summary?db=core;g=ENSDARG00000035559>Genome Browser</a><br>
+<br>ENSDARG00000115148
+<br>No Ortholog<br><a href=http://metazoa.ensembl.org/danio_rerio/Gene/Summary?db=core;g=ENSDARG00000115148>Genome Browser</a></td><td><a href=https://rest.ensembl.org/homology/id/ENSDARG00000035559?format=condensed;type=orthologues;content-type=application/json>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=danio_rerio">UCSC link</a></td><td><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000183644">ENSDART00000183644</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000135934">ENSDART00000135934</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000051549">ENSDART00000051549</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000139520">ENSDART00000139520</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000177458">ENSDART00000177458</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000183748">ENSDART00000183748</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000135083">ENSDART00000135083</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/Summary?db=core;t=ENSDART00000137298">ENSDART00000137298</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000152377</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000116736</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000051548</a><br>
+
+<br><br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000144168</a><br>
+
+<br><a href="https://www.ensembl.org/danio_rerio/Transcript/ProteinSummary?db=core;t=ENSDART00000137298">ENSDARP00000151125</a><br>
+
 <br><br><br>ENSDARP00000145150
 <br>ENSDARP00000147996
 <br></td><td><a href= "http://www.uniprot.org/uniprot/P79734">P79734</a><br>
@@ -714,16 +813,16 @@
 <a href="https://www.rcsb.org/structure/4CZ7">4CZ7</a> : Truncated tetramerization domain of zebrafish p53 (crystal form III)<br>
 <a href="https://www.rcsb.org/structure/4D1L">4D1L</a> : Tetramerization domain of zebrafish p53 (crystal form I)<br>
 <a href="https://www.rcsb.org/structure/4D1M">4D1M</a> : Tetramerization domain of zebrafish p53 (crystal form II)<br>
-</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P79734">P79734 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=G1K2L5">G1K2L5 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=B0R0M3">B0R0M3 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=131891154188.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8439100154300.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2666329154345.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8910180154420.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5838826154476.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5955565154545.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4515320154606.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4375249154646.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9873732154706.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1624306154745.scan.gz">Graphical View</a><br>
+</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P79734">P79734 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=G1K2L5">G1K2L5 interaction map </a><br><a href="https://string-db.org/api/highres_image/network?identifiers=B0R0M3">B0R0M3 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7906894111995.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7219840112294.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=2919795112452.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=245429112653.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9373742112793.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6625103112933.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7928791113118.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9119823113305.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1030887113482.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5820870113598.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/P53">PF00870 : P53</a><br>
 <a href="https://pfam.xfam.org/family/P53_tetramer">PF07710 : P53_tetramer</a><br>
 <a href="https://pfam.xfam.org/protein/<a href="https://prosite.expasy.org/PS00348">P53 : PS00348</a>">Protein : P53_tetramer </a><br>
@@ -734,10 +833,15 @@
 </td>
 </td><td><a href="https://www.genome.jp/dbget-bin/www_bget?ath:AT2G18790">ath:AT2G18790</a><br>
 </td><td><a href="https://www.genome.jp/kegg-bin/show_pathway?ath04712">ath04712 : Circadian rhythm - plant</a><br>
-</td><td>AT2G18790<br><a href=http://www.plants.ensembl.org/arabidopsis_thaliana/Location/View?db=core;g=AT2G18790>Othologs</a><br><a href=http://plants.ensembl.org/Arabidopsis_thaliana/Gene/Summary?db=core;g=AT2G18790;r=2:8139756-8144461>Genome browser</a></td><td>AT2G18790.1
-<br>AT2G18790.2
-<br></td><td>AT2G18790.1
-<br>AT2G18790.2
+</td><td>AT2G18790
+<br>No Ortholog<br><a href=http://metazoa.ensembl.org/arabidopsis_thaliana/Gene/Summary?db=core;g=AT2G18790>Genome Browser</a><br></td><td><a href=FALSE>Genome browser</a><br><a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org=arabidopsis_thaliana">UCSC link</a></td><td><a href="https://www.ensembl.org/arabidopsis_thaliana/Transcript/Summary?db=core;t=AT2G18790.1">AT2G18790.1</a><br>
+
+<br><a href="https://www.ensembl.org/arabidopsis_thaliana/Transcript/Summary?db=core;t=AT2G18790.2">AT2G18790.2</a><br>
+
+<br></td><td><a href="https://www.ensembl.org/arabidopsis_thaliana/Transcript/ProteinSummary?db=core;t=AT2G18790.2">AT2G18790.1</a><br>
+
+<br><a href="https://www.ensembl.org/arabidopsis_thaliana/Transcript/ProteinSummary?db=core;t=AT2G18790.2">AT2G18790.2</a><br>
+
 <br></td><td><a href= "http://www.uniprot.org/uniprot/P14713">P14713</a><br>
 <a href= "http://www.uniprot.org/uniprot/Q5G894">Q5G894</a><br>
 <a href= "http://www.uniprot.org/uniprot/B0FWJ8">B0FWJ8</a><br>
@@ -762,17 +866,17 @@
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0009881">photoreceptor activity</a>
 <br><a href="https://www.ebi.ac.uk/QuickGO/term/GO:0042803">protein homodimerization activity</a>
 <br></td><td></td><td><a href="https://www.rcsb.org/structure/4OUR">4OUR</a> : Crystal structure of Arabidopsis thaliana phytochrome B photosensory module<br>
-</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P14713">P14713 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50046">PHYTOCHROME_2 : PS50046</a><br><a href="https://prosite.expasy.org/PS00245">PHYTOCHROME_1 : PS00245</a><br><a href="https://prosite.expasy.org/PS50112">PAS : PS50112</a><br><a href="https://prosite.expasy.org/PS50109">HIS_KIN : PS50109</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9396124156553.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7284308156660.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=853210156725.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=79063156769.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=14492156815.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4695536156871.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3519556156923.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=1625748156966.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3870555157029.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=4530770157089.scan.gz">Graphical View</a><br>
-<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7755808157141.scan.gz">Graphical View</a><br>
+</td><td><a href="https://string-db.org/api/highres_image/network?identifiers=P14713">P14713 interaction map </a><br></td><td><a href="https://prosite.expasy.org/PS50046">PHYTOCHROME_2 : PS50046</a><br><a href="https://prosite.expasy.org/PS00245">PHYTOCHROME_1 : PS00245</a><br><a href="https://prosite.expasy.org/PS50112">PAS : PS50112</a><br><a href="https://prosite.expasy.org/PS50109">HIS_KIN : PS50109</a><br><a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9432550121455.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=3610948121872.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=6308907122090.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5158484122275.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8340737122443.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=649794122613.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7591678122731.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=5514409122823.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=7498929122922.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=9575281123035.scan.gz">Graphical View</a><br>
+<a href="https://prosite.expasy.org/cgi-bin/prosite/ScanView.cgi?scanfile=8011826123156.scan.gz">Graphical View</a><br>
 </td><td><a href="https://pfam.xfam.org/family/PHY">PF00360 : PHY</a><br>
 <a href="https://pfam.xfam.org/family/HisKA">PF00512 : HisKA</a><br>
 <a href="https://pfam.xfam.org/family/PAS">PF00989 : PAS</a><br>

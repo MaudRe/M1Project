@@ -1,13 +1,13 @@
 import re,requests
-from uniprot import *
-from PDB import *
-from Ensembl import *
-from NCBI import *
-from String import *
-from Go import *
-from Prosite import *
-from Pfam import *
-from KEGG import *
+from uniprot import uniprot_parse
+from PDB import PDB_parse
+from Ensembl import Ensembl_id,Ens_trans,Orthologs
+from NCBI import Gene,refseq_fct
+from String import string_parse
+from Go import go
+from Prosite import Graph,Prosite
+from Pfam import PFAM
+from KEGG import Kegg
 
 
 f=open('GeneSymbols.txt','r')
@@ -17,7 +17,7 @@ genes=[]
 organism=[]
 
 tempfile = open('table.html','r')
-outputfile = open('index.html','w')
+outputfile = open('Result.html','w')
 outputfile.write(tempfile.read())
 tempfile.close()
 
@@ -31,7 +31,7 @@ for i in lignes:
 	organism=tmp[1]
 	'''print(genes)
 	print(organism)'''
-	print(gene+'\n\n')
+	print('\n|'+gene+'|\n\n')
 #-------------------------------------------------------------------------------------------	
 	outputfile.write("<td>") #gene Symbol
 	outputfile.write(gene)
@@ -112,32 +112,42 @@ for i in lignes:
 	outputfile.write("<td>") #Gene id
 	ID_Ens=[]
 	ID_Ens=Ensembl_id(organism,gene)
-	#print(ID_Ens)
 	outputfile.write(ID_Ens[0])
-	outputfile.write("<br>")
-	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[1])+'>Othologs</a>')
-	outputfile.write("<br>")
-	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[0])+'>Genome browser</a>')
-	if len(ID_Ens)!=1:
-		outputfile.write('\n')
-		outputfile.write("<br>")
+	outputfile.write('\n<br>')
+	if Orthologs(ID_Ens[0],organism)[0]=="FALSE":
+		outputfile.write("No Ortholog<br>")
+	else:
+		outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[0])+'>Othologs</a><br>')
+	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[2])+'>Genome Browser</a><br>')
+
+	if len(ID_Ens)==2:
+		outputfile.write('\n<br>')
 		outputfile.write(ID_Ens[1])
-		outputfile.write("<br>")
-		outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[1])+'>Othologs</a>')
-		outputfile.write("<br>")
-		outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[0])+'>Genome browser</a>')
+		outputfile.write('\n<br>')
+		if Orthologs(ID_Ens[1],organism)[0]=="FALSE":
+			outputfile.write("No Ortholog"+'<br>')
+		else:
+			outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[0])+'>Othologs</a><br>')
+		outputfile.write('<a href='+str(Orthologs(ID_Ens[1],organism)[2])+'>Genome Browser</a>')
 
 	outputfile.write("</td>")
 
+#-------------------------------------------------------------------------------------------
+	print("UCSC link...\n")
+	outputfile.write("<td>")
+	outputfile.write('<a href='+str(Orthologs(ID_Ens[0],organism)[0])+'>Genome browser</a><br>')
+	outputfile.write('<a href="http://genome.ucsc.edu/cgi-bin/hgTracks?org={}">UCSC link</a>'.format(organism))
+	outputfile.write("</td>")
 
 #-------------------------------------------------------------------------------------------
 	print("Transcript Ensembl.."+'\n')
 	outputfile.write("<td>") #Transcript Ensembl
 	Transc=Ens_trans(ID_Ens[0])
 	for j in range(0,len(Transc)):
-			outputfile.write(Transc[j]['id'])
-			outputfile.write('\n')
-			outputfile.write("<br>")
+		Transcript=Transc[j]['id']
+		outputfile.write('<a href=\"https://www.ensembl.org/{0}/Transcript/Summary?db=core;t={1}">{1}</a><br>\n'.format(organism,Transcript))
+		outputfile.write('\n')
+		outputfile.write("<br>")
 	outputfile.write("</td>")
 	
 
@@ -147,7 +157,7 @@ for i in lignes:
 	j=0
 	for j in range(0,len(Transc)):
 		if Transc[j]["biotype"]=="protein_coding" :
-			outputfile.write(Transc[j]["Translation"]["id"])		
+			outputfile.write('<a href=\"https://www.ensembl.org/{0}/Transcript/ProteinSummary?db=core;t={1}">{2}</a><br>\n'.format(organism, Transcript, Transc[j]["Translation"]["id"]))	
 			outputfile.write('\n')
 			outputfile.write("<br>")
 		else:
@@ -169,9 +179,8 @@ for i in lignes:
 	Id_Uni=uniprot_parse(gene,organism)[0]
 	for Id in Id_Uni:
 		#print(Id)
-		outputfile.write(Id)
-		outputfile.write('\n')
-		outputfile.write("<br>")
+		outputfile.write('<a href= "http://www.uniprot.org/uniprot/{0}">{0}</a><br>\n'.format(Id))
+
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Protein name UNIPROT
@@ -182,21 +191,36 @@ for i in lignes:
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Biological Process
 	print("Go Biological Process..."+'\n')
-	for name in go(Id_Uni,'biological_process'):
-		outputfile.write(name+'<br>')
+	url_Go = "https://www.ebi.ac.uk/QuickGO/term/"
+	res_Go_id=go(Id_Uni,"biological_process")[0]
+	res_Go_Name=go(Id_Uni,"biological_process")[1]
+	for i in range(0,len(res_Go_Name)):
+		#print('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i]))
+		outputfile.write('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i])+'<br>')
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Molecular fonction
 	print("Go Molecular Function..."+'\n')
-	for name in go(Id_Uni,'molecular_function'):
-		outputfile.write(name+'<br>')
+	res_Go_id=go(Id_Uni,"molecular_function")[0]
+	res_Go_Name=go(Id_Uni,"molecular_function")[1]
+	print(res_Go_Name)
+	for i in range(0,len(res_Go_Name)):
+		#print('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i]))
+		outputfile.write('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i])+'<br>')
+
 	outputfile.write("</td>")
 
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Cellular Component
 	print("Go Cellular Component..."+'\n')
-	for name in go(Id_Uni,'cellular_component'):
-		outputfile.write(name+'<br>')
+	res_Go_id=go(Id_Uni,"cellular_component")[0]
+	print(res_Go_id)
+	res_Go_Name=go(Id_Uni,"cellular_component")[1]
+	print(res_Go_Name)
+	for i in range(0,len(res_Go_Name)):
+		#print('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i]))
+		outputfile.write('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i])+'<br>')
+
 	outputfile.write("</td>")
 #-------------------------------------------------------------------------------------------
 	print('PDB id.....'+'\n')
@@ -204,7 +228,7 @@ for i in lignes:
 	lists=PDB_parse(Id_Uni)
 	if len(lists[0]) != 0:
 		for k in range(0,len(lists[0])):
-			outputfile.write(lists[0][k]+" : "+lists[1][k]+'\n'+"<br>")
+			outputfile.write('<a href="https://www.rcsb.org/structure/{0}">{0}</a>'.format(lists[0][k])+' : '+lists[1][k]+'<br>\n')
 	else:
 		outputfile.write("No Data Available"+'\n'+"<br>")
 	outputfile.write("</td>")
@@ -231,16 +255,9 @@ for i in lignes:
 	if id_pfam:
 		for id_p in id_pfam:
 			outputfile.write('<a href=\"https://pfam.xfam.org/family/{1}\">{0} : {1}</a><br>\n'.format(id_p[0], id_p[1]))
+		outputfile.write('<a href="https://pfam.xfam.org/protein/{0}">Protein : {1} </a><br>\n'.format(Id,id_p[1]))
 	outputfile.write("</td>")
-#-------------------------------------------------------------------------------------------
-	outputfile.write("<td>") #PFAM viewer 
-	#Un seul viewer à remttre dans la colonne 
-	print('Pfam viewer...'+'\n')
-	id_pfam=PFAM(Id_Uni)
-	if id_pfam:
-		for id_p in id_pfam:
-			outputfile.write('<a href="https://pfam.xfam.org/protein/{0}">Protein : {1} </a><br>\n'.format(Id,id_p[1]))
-	outputfile.write("</td>")
+
 #-------------------------------------------------------------------------------------------
 	print("----------------------------------------------------\n")
 	outputfile.write("</tr>")

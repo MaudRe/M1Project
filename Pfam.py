@@ -12,7 +12,6 @@ def PFAM(Id_Uni):
 			for id in id_list:
 				if id not in result:
 					result.append(id)
-	print(result)
 	return(result)
 
 

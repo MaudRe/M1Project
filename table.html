@@ -4,6 +4,23 @@
 
 <head>
     <meta charset="utf-8">
+	<style type="text/css">
+		table{
+ 			 border: 1px solid black;
+				}
+		th{
+			  text-align: center;
+ 			 border-left: 1px solid black;
+ 			 border-right: 1px solid black;
+				}		
+
+		td{
+			  text-align: center;
+ 			 border-left: 1px solid black;
+ 			 border-right: 1px solid black;
+				}
+
+	</style>
     <title>Genes Results</title>
     <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -32,7 +49,8 @@
 <th>Proteins id (Refseq)</th>
 <th>KEGG id</th>
 <th>KEGG Pathway</th>
-<th>Gene id (Ensembl)<br>Genome Browser + Ortholog</th>
+<th>Gene id (Ensembl)<br>Ortholog</th>
+<th>UCSC link & <br>Genome Browser</th>
 <th>Transcripts (Ensembl)</th>
 <th>Proteins (Ensembl)</th>
 <th>UNIPROT id</th>
@@ -44,7 +62,6 @@
 <th>Interactions (STRING)</th>
 <th>PROSITE id</th>
 <th>Pfam id</th>
-<th>Pfam viewer</th>
 </tr>
 </thead>
 <tbody>
