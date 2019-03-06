@@ -1,69 +1,66 @@
 <!DOCTYPE html>
 
 <html>
+	<head>
+	    <meta charset="utf-8">
+		<style type="text/css">
+			table{
+	 			 border: 1px solid black;
+					}
+			th{
+				  text-align: center;
+	 			 border-left: 1px solid black;
+	 			 border-right: 1px solid black;
+					}		
+			td{
+				  text-align: center;
+	 			 border-left: 1px solid black;
+	 			 border-right: 1px solid black;
+					}
+		</style>
+	    <title>Genes table Results</title>
+	    <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
+	    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
-<head>
-    <meta charset="utf-8">
-	<style type="text/css">
-		table{
- 			 border: 1px solid black;
-				}
-		th{
-			  text-align: center;
- 			 border-left: 1px solid black;
- 			 border-right: 1px solid black;
-				}		
+	    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	    <script>
+		$(document).ready(function(){
+		$('#tab').DataTable({
+		"scrollX": true
+		});
+		});
+	    </script>
+	    <style>
+		th, td { white-space: nowrap; }
+	    </style>
+	</head>
+		<body>
 
-		td{
-			  text-align: center;
- 			 border-left: 1px solid black;
- 			 border-right: 1px solid black;
-				}
-
-	</style>
-    <title>Genes Results</title>
-    <script type="text/javascript" src='https://code.jquery.com/jquery-3.3.1.js'></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <script>
-        $(document).ready(function(){
-        $('#tab').DataTable({
-        "scrollX": true
-        });
-        });
-    </script>
-    <style>
-        th, td { white-space: nowrap; }
-    </style>
-</head>
-<body>
-
-<table id="tab" class="display">
-<thead>
-<tr>
-<th>Gene Symbol</th>
-<th>Specie</th>
-<th>Gene (NCBI)</th>
-<th>Transcripts id (Refseq)</th>
-<th>Proteins id (Refseq)</th>
-<th>KEGG id</th>
-<th>KEGG Pathway</th>
-<th>Gene id (Ensembl)<br>Ortholog</th>
-<th>UCSC link & <br>Genome Browser</th>
-<th>Transcripts (Ensembl)</th>
-<th>Proteins (Ensembl)</th>
-<th>UNIPROT id</th>
-<th>Protein name (UNIPROT)</th>
-<th>Biological process(GO)</th>
-<th>Molecular function(GO)</th>
-<th>Cellular component(GO)</th>
-<th>PDB id</th>
-<th>Interactions (STRING)</th>
-<th>PROSITE id</th>
-<th>Pfam id</th>
-</tr>
-</thead>
-<tbody>
+			<table id="tab" class="display">
+				<thead>
+					<tr>
+						<th>Gene Symbol</th>
+						<th>Specie</th>
+						<th>Gene (NCBI)</th>
+						<th>Transcripts id (Refseq)</th>
+						<th>Proteins id (Refseq)</th>
+						<th>KEGG id</th>
+						<th>KEGG Pathway</th>
+						<th>Gene id (Ensembl)<br>Ortholog</th>
+						<th>UCSC link & <br>Genome Browser</th>
+						<th>Transcripts (Ensembl)</th>
+						<th>Proteins (Ensembl)</th>
+						<th>UNIPROT id</th>
+						<th>Protein name (UNIPROT)</th>
+						<th>Biological process(GO)</th>
+						<th>Molecular function(GO)</th>
+						<th>Cellular component(GO)</th>
+						<th>PDB id</th>
+						<th>Interactions (STRING)</th>
+						<th>PROSITE id</th>
+						<th>Pfam id</th>
+					</tr>
+				</thead>
+			<tbody>
 
 

@@ -17,16 +17,13 @@ def PDB_parse(ID_list):
 	</orgPdbQuery>
 	"""
 	response = requests.post(url, data=data, headers=header)
-	#print(response.text)
 	if response.text != "null\n":  
 		ID_pdb = re.sub('\n', ',', response.text[:-1])  
 		clean_list_id = re.sub('(:\d+)', '', ID_pdb)
 		id_struct = requests.get("""http://www.rcsb.org/pdb/rest/customReport.csv?pdbids=""" +clean_list_id+"""&customReportColumns=structureId,structureTitle,&format=csv""")
 		list_id_struct = id_struct.text.split("<br />")
-		#print(list_id_struct)
 		del list_id_struct[0]  
 		del list_id_struct[len(list_id_struct)-1]  
-		#print(list_id_struct)
 		for id_struct in list_id_struct:  
 			pdb_list = id_struct.split(',')  
 			id = pdb_list[0]

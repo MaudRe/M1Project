@@ -12,12 +12,9 @@ def Ensembl_id(organism,gene):
 		r = requests.get(server+ext, headers={ "Content-Type" : "application/json"})
  		
 	decoded = r.json()
-	#print(len(decoded))
 	list_res.append(decoded[0]['id'])
 	if len(decoded) !=1:
-		#print(decoded[1]['id'])
 		list_res.append(decoded[1]['id'])
-	#print(list_res)
 	return list_res
 
 def Ens_trans(Id):

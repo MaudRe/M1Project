@@ -8,3 +8,4 @@ TP53	danio rerio
 RAD51	pan troglodytes
 TP53	danio rerio
 PHYB	arabidopsis thaliana
+PHATRDRAFT_BD1660	phaeodactylum tricornutum

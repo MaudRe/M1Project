@@ -29,8 +29,6 @@ for i in lignes:
 	outputfile.write("<tr>")
 	gene=tmp[0]
 	organism=tmp[1]
-	'''print(genes)
-	print(organism)'''
 	print('\n|'+gene+'|\n\n')
 #-------------------------------------------------------------------------------------------	
 	outputfile.write("<td>") #gene Symbol
@@ -203,20 +201,16 @@ for i in lignes:
 	print("Go Molecular Function..."+'\n')
 	res_Go_id=go(Id_Uni,"molecular_function")[0]
 	res_Go_Name=go(Id_Uni,"molecular_function")[1]
-	print(res_Go_Name)
 	for i in range(0,len(res_Go_Name)):
 		#print('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i]))
 		outputfile.write('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i])+'<br>')
-
 	outputfile.write("</td>")
 
 #-------------------------------------------------------------------------------------------
 	outputfile.write("<td>") #Cellular Component
 	print("Go Cellular Component..."+'\n')
 	res_Go_id=go(Id_Uni,"cellular_component")[0]
-	print(res_Go_id)
 	res_Go_Name=go(Id_Uni,"cellular_component")[1]
-	print(res_Go_Name)
 	for i in range(0,len(res_Go_Name)):
 		#print('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i]))
 		outputfile.write('<a href="{}{}">{}</a>\n'.format(url_Go, res_Go_id[i], res_Go_Name[i])+'<br>')

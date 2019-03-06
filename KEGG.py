@@ -8,9 +8,7 @@ def Kegg(id_NCBI):
 	if response.ok:
 		kegg = response.text.rstrip()
 		list_temp = kegg.split("\t") 
-		#print(list_temp)
 		list_kegg = list_temp[1::2]
-		#print(len(list_kegg))
 		if len(list_kegg) != 0:
 			k_id.append(list_kegg)
 
